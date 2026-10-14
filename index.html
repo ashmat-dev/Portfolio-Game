@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ashwin Cherry Mathew – Animator & Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#0d1015;--bg2:#151a23;--line:#272f3d;--tx:#eef1f6;--mu:#98a2b3;--am:#ffb547;--te:#4fd1c5;--on:#0d1015}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f6f4ef;--bg2:#fff;--line:#dcd7cc;--tx:#15181e;--mu:#586070;--am:#b86e00;--te:#0b857c;--on:#fff}}
+:root[data-theme="light"]{--bg:#f6f4ef;--bg2:#fff;--line:#dcd7cc;--tx:#15181e;--mu:#586070;--am:#b86e00;--te:#0b857c;--on:#fff}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 17px/1.65 "Space Grotesk",system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-weight:700;letter-spacing:-.02em;line-height:1.05;margin:0}
+h2{font-size:clamp(30px,5vw,48px);margin:10px 0 12px}
+h3{font-size:22px}
+a{color:inherit}
+.mono{font:500 12px/1 "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--mu)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+section{padding:clamp(56px,9vw,104px) 0;border-top:1px solid var(--line)}
+.lead{color:var(--mu);max-width:58ch;margin:0 0 34px;font-size:18px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:6px;align-items:center;overflow-x:auto;white-space:nowrap;scrollbar-width:none;padding-top:12px;padding-bottom:12px}
+nav b{margin-right:auto;padding-right:16px;font-size:18px}
+nav a{text-decoration:none;color:var(--mu);font-size:14px;padding:4px 10px;border-radius:6px}
+nav a:hover{color:var(--tx);background:var(--bg2)}
+#ph{height:2px;width:0;background:linear-gradient(90deg,var(--am),var(--te))}
+#tc{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:6;background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:7px 10px}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,64px);align-items:center;padding:clamp(40px,7vw,84px) 0}
+.hero h1{font-size:clamp(42px,7.4vw,86px);margin:18px 0}
+.hero h1 span.a{color:var(--am)}.hero h1 span.t{color:var(--te)}
+.hero p{color:var(--mu);font-size:19px;max-width:48ch;margin:0 0 28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;border:1px solid var(--tx);background:var(--tx);color:var(--bg);padding:11px 22px;border-radius:999px;font:500 15px "Space Grotesk",sans-serif;text-decoration:none;cursor:pointer;transition:transform .2s cubic-bezier(.2,.9,.3,1.3),background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.o{background:transparent;color:var(--tx);border-color:var(--line)}
+.btn.o:hover{border-color:var(--tx)}
+.btn:focus-visible,.chip:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--am);outline-offset:3px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:44px}
+.stats div{background:var(--bg);padding:16px 18px}
+.stats b{display:block;font-size:30px;letter-spacing:-.03em}
+.stats .mono{display:block;margin-top:4px;line-height:1.4}
+.vp{position:relative;background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:30px 24px 20px}
+.vp:before,.vp:after{content:"";position:absolute;width:16px;height:16px;border:2px solid var(--am)}
+.vp:before{top:10px;left:10px;border-right:0;border-bottom:0}.vp:after{bottom:10px;right:10px;border-left:0;border-top:0}
+.reels{display:flex;gap:10px;justify-content:center}
+.reel{width:clamp(66px,20vw,96px);height:96px;overflow:hidden;background:#f4efe3;border-radius:12px;border:1px solid var(--line)}
+.sym{height:96px;display:grid;place-items:center;font:700 50px "Space Grotesk",sans-serif;color:#1a1d24}
+.sym.r{color:#e5484d}.sym.g{color:#0b857c}
+.vp .row{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-top:18px}
+.vp svg{width:84px;height:74px;flex:none}
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:20}
+.rv{transition:opacity .7s,transform .7s cubic-bezier(.2,.9,.3,1)}
+html.js .rv:not(.in){opacity:0;transform:translateY(26px)}
+.tracks{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,56px)}
+.trk{position:relative;padding-left:30px}
+.trk:before{content:"";position:absolute;left:7px;top:34px;bottom:8px;width:2px;background:var(--c)}
+.trk>.mono{color:var(--c);margin-bottom:6px;display:block}
+.trk h3{font-size:clamp(28px,4vw,38px);margin-bottom:22px}
+.trk ol{list-style:none;margin:0;padding:0;display:grid;gap:22px}
+.trk li{position:relative}
+.trk li:before{content:"";position:absolute;left:-30px;top:6px;width:11px;height:11px;background:var(--c);transform:rotate(45deg);margin-left:2px}
+.trk li b{display:block;font-size:18px}.trk li span{color:var(--mu);font-size:15.5px}
+.trk.a{--c:var(--am)}.trk.d{--c:var(--te)}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:20px}
+.chip{border:1px solid var(--line);background:transparent;color:var(--mu);padding:6px 14px;border-radius:999px;font:500 14px "Space Grotesk",sans-serif;cursor:pointer}
+.chip:hover{color:var(--tx);border-color:var(--mu)}
+.chip[aria-pressed="true"]{background:var(--tx);color:var(--bg);border-color:var(--tx)}
+select{background:var(--bg2);color:var(--tx);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font:inherit;font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:18px}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .3s cubic-bezier(.2,.9,.3,1.3),border-color .2s}
+.card:hover{transform:translateY(-4px);border-color:var(--am)}
+.media{aspect-ratio:16/9;background:#080a0e;display:grid;place-items:center;overflow:hidden}
+.media img,.media video,.media svg{width:100%;height:100%;object-fit:contain;display:block}
+.media .ph2{color:var(--mu);font:500 12px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.08em;padding:16px;text-align:center}
+.media .err{background:#e5484d;color:#fff;font-size:14px;padding:14px;text-align:center}
+.meta{padding:14px 16px;display:flex;justify-content:space-between;gap:8px;align-items:start}
+.meta .mono{display:block;margin-top:6px}
+.rm{background:none;border:0;color:var(--mu);cursor:pointer;font-size:13px;text-decoration:underline}
+.note{font-size:14px;color:var(--mu);margin-top:18px}
+code{font:13px "JetBrains Mono",monospace;background:var(--bg2);border:1px solid var(--line);padding:1px 6px;border-radius:5px}
+.case{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,5vw,60px);align-items:center;padding:34px 0;border-top:1px solid var(--line)}
+.case:first-of-type{border-top:0}
+.case:nth-child(even) .fr{order:2}
+.fr{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3;background:#080a0e}
+.fr .media{aspect-ratio:auto;height:100%}
+.case h3{font-size:clamp(26px,3.6vw,38px);margin:10px 0}
+.case .two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+.case .two div{border-left:2px solid var(--c);padding-left:12px;font-size:15px;color:var(--mu)}
+.case .two div:first-child{--c:var(--am)}.case .two div:last-child{--c:var(--te)}
+.case .two .mono{display:block;margin-bottom:4px;color:var(--tx)}
+.site{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;font-size:15px;color:var(--mu)}
+.site .mono{color:var(--tx)}
+.site a{color:var(--am);word-break:break-all;text-decoration:none;border-bottom:1px solid var(--am)}
+.site a:hover{color:var(--tx);border-color:var(--tx)}
+.lnk{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.btn.dis{opacity:.55;cursor:not-allowed;pointer-events:none}
+.spin{transform-origin:200px 150px;animation:rot 14s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+.steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;counter-reset:s}
+.steps li{counter-increment:s;background:var(--bg);padding:22px}
+.steps li:before{content:"0" counter(s);font:500 13px "JetBrains Mono",monospace;color:var(--am)}
+.steps b{display:block;font-size:19px;margin:8px 0 4px}.steps span{color:var(--mu);font-size:15px}
+.fit{display:grid;gap:0;border-top:1px solid var(--line)}
+.fit div{display:grid;grid-template-columns:90px 1fr 1.4fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.fit i{font:500 12px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.08em;font-style:normal}
+.fit i.a{color:var(--am)}.fit i.d{color:var(--te)}.fit i.t{color:var(--mu)}
+.fit b{font-weight:500}.fit span{color:var(--mu);font-size:15.5px}
+.cta{font-size:clamp(28px,6vw,64px);font-weight:700;letter-spacing:-.03em;word-break:break-all;text-decoration:none;display:inline-block;margin:6px 0 24px;border-bottom:3px solid var(--am)}
+.cta:hover{color:var(--am)}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;color:var(--mu);font-size:15.5px}
+.info b{color:var(--tx);display:block}
+footer{padding:30px 0 70px;border-top:1px solid var(--line);color:var(--mu);font-size:14px}
+@media (max-width:820px){.hero,.tracks,.case{grid-template-columns:1fr}.case:nth-child(even) .fr{order:0}.fit div{grid-template-columns:1fr;gap:4px}.stats{grid-template-columns:1fr 1fr}}
+@media (max-width:420px){.case .two{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.spin{animation:none}.rv,.card,.btn{transition:none}html.js .rv:not(.in){opacity:1;transform:none}}
+.tg{--c:var(--am)}.tg.d{--c:var(--te)}
+.tg h3{font-size:22px;display:flex;align-items:center;gap:12px}
+.tg h3:before{content:"";width:11px;height:11px;background:var(--c);transform:rotate(45deg);flex:none}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:14px;margin-top:18px}
+.tile{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:18px 10px 14px;text-align:center;transition:transform .3s cubic-bezier(.2,.9,.3,1.4),border-color .2s}
+.tile:hover{transform:translateY(-5px);border-color:var(--c)}
+.tile b{display:block;font-size:15px;font-weight:500;line-height:1.3}
+.tile small{color:var(--mu);font-size:12.5px;line-height:1.3;display:block;margin-top:2px}
+.ico{width:62px;height:62px;margin:0 auto 12px;border-radius:17px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--c) 13%,transparent);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);color:var(--c);font:700 20px "JetBrains Mono",monospace;animation:bob 3.2s ease-in-out infinite;animation-delay:calc(var(--i)*.18s)}
+.tile:hover .ico{animation:pop .6s cubic-bezier(.2,.9,.3,1.4)}
+.ico svg{width:36px;height:36px;overflow:visible}
+.cr{display:inline-block;width:3px;height:20px;background:currentColor;margin-left:3px;animation:bl 1s steps(2) infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+@keyframes pop{30%{transform:scale(1.2,.84)}60%{transform:scale(.94,1.1)}100%{transform:scale(1)}}
+@keyframes bl{50%{opacity:0}}
+.b1{transform-origin:6px 32px;animation:sw1 2.4s ease-in-out infinite}.b2{transform-origin:20px 18px;animation:sw2 2.4s ease-in-out infinite}
+@keyframes sw1{50%{transform:rotate(-22deg)}}@keyframes sw2{50%{transform:rotate(30deg)}}
+.db{transform-origin:20px 20px;animation:sq 2.2s ease-in-out infinite}
+@keyframes sq{25%{transform:scale(1.18,.82)}55%{transform:scale(.9,1.12) rotate(10deg)}80%{transform:rotate(-6deg)}}
+.ez{animation:ez 2.6s cubic-bezier(.2,.9,.3,1.2) infinite}
+@keyframes ez{0%{transform:translate(0,0)}60%{transform:translate(31px,-30px)}78%{transform:translate(29px,-28px)}90%,100%{transform:translate(30px,-27px)}}
+.tw,.co,.pl,.fl,.sp{transform-box:fill-box;transform-origin:center}
+.tw{animation:tw 1.4s ease-in-out infinite}@keyframes tw{50%{transform:scale(.4);opacity:.4}}
+.co{animation:fp 1.3s ease-in-out infinite}@keyframes fp{50%{transform:scaleX(.15)}}
+.pl{animation:pl 1.6s ease-in-out infinite}@keyframes pl{50%{transform:scale(1.5);opacity:.5}}
+.fl{transform-origin:50% 100%;animation:fl 1.4s ease-in-out infinite}@keyframes fl{50%{transform:scale(.92,1.1) rotate(4deg)}}
+.sp{animation:rot 9s linear infinite}
+@media (prefers-reduced-motion:reduce){.ico,.ico *,.tile{animation:none!important;transition:none}}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.in-logo{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--bg2);color:var(--mu);transition:background .2s,color .2s,border-color .2s,transform .25s cubic-bezier(.2,.9,.3,1.4)}
+.in-logo:hover{background:#0a66c2;border-color:#0a66c2;color:#fff;transform:translateY(-3px) scale(1.08)}
+.in-logo:focus-visible{outline:2px solid var(--am);outline-offset:4px}
+.in-logo svg{width:20px;height:20px}
+</style>
+</head>
+<body>
+<canvas id="fx" aria-hidden="true"></canvas>
+<nav><div class="wrap"><b>Ashwin Cherry Mathew</b><a href="#tracks">Skills</a><a href="#tech">Technologies</a><a href="#work">Reel</a><a href="#games">Games</a><a href="#process">Workflow</a><a href="#fit">Qualifications</a><a href="#contact">Contact</a></div><div id="ph"></div></nav>
+<div id="tc" class="mono" aria-hidden="true">0000f</div>
+
+<div class="wrap"><header class="hero">
+  <div>
+    <span class="mono">Portfolio · Animation + Development</span>
+    <h1>I <span class="a">animate</span> it,<br>then I <span class="t">build</span> it.</h1>
+    <p>Spine 2D and DragonBones animation, plus the Unity C# that puts it in the game. Five years shipping 2D mobile games on iOS, Android and Web.</p>
+    <div class="btns"><a class="btn" href="#work">Watch the reel</a><a class="btn o" href="#contact">Get in touch</a></div>
+  </div>
+  <div class="vp">
+    <div class="reels" id="reels" aria-label="Slot reel animation demo"></div>
+    <div class="row"><div><button class="btn" id="spin">Spin</button><div class="mono" style="margin-top:10px">Anticipation · overshoot · burst</div></div>
+      <svg viewBox="0 0 160 140" aria-label="Easing curve"><path d="M10 130H150M10 130V10" stroke="var(--line)" fill="none" stroke-width="2"/><path d="M10 130C38 31 52 0 150 20" stroke="var(--am)" fill="none" stroke-width="3"/><circle cx="10" cy="130" r="4" fill="var(--am)"/><circle cx="150" cy="20" r="4" fill="var(--am)"/></svg></div>
+  </div>
+</header>
+<div class="stats rv"><div><b>5 yrs</b><span class="mono">Shipped 2D mobile</span></div><div><b>3</b><span class="mono">iOS · Android · Web</span></div><div><b>2</b><span class="mono">Spine + DragonBones</span></div><div><b>2</b><span class="mono">Titles led</span></div></div>
+</div>
+
+<section id="tracks"><div class="wrap">
+  <span class="mono">01 · Two tracks, one person</span>
+  <h2>Animation and development, side by side</h2>
+  <p class="lead">I rig it, animate it and wire it into the game myself, so the motion lands exactly as designed.</p>
+  <div class="tracks">
+    <div class="trk a rv"><span class="mono">Track A</span><h3>Animation</h3><ol>
+      <li><b>Spine 2D and DragonBones</b><span>Rigs, IK, meshes, skins and events built for reuse.</span></li>
+      <li><b>Slots and casual</b><span>Reels, symbols, characters, win loops and bonus features.</span></li>
+      <li><b>Principles</b><span>Timing, easing, anticipation and follow-through.</span></li>
+      <li><b>VFX</b><span>Particles, glow, sparkles and coin bursts.</span></li>
+      <li><b>Tools</b><span>Photoshop, Illustrator, Clip Studio Paint.</span></li></ol></div>
+    <div class="trk d rv"><span class="mono">Track B</span><h3>Development</h3><ol>
+      <li><b>Unity and C#</b><span>OOP, SOLID and design patterns; reusable gameplay systems.</span></li>
+      <li><b>Backend</b><span>REST services, leaderboards, achievements, game-state sync, Firebase.</span></li>
+      <li><b>Multiplayer and ads</b><span>Photon matchmaking and rooms; Google AdMob mediation.</span></li>
+      <li><b>Performance</b><span>Memory profiling, asset optimization, device compatibility, C# exposure.</span></li>
+      <li><b>Web</b><span>HTML5, JavaScript, TypeScript, Angular, Node.js, ASP.NET.</span></li></ol></div>
+  </div>
+</div></section>
+
+<section id="tech"><div class="wrap">
+  <span class="mono">02 · Technologies</span>
+  <h2>Tools and technologies</h2>
+  <p class="lead">The languages, engines and animation tools I use day to day.</p>
+  <div class="tg rv"><h3>Animation</h3><div class="tiles" id="ta"></div></div>
+  <div class="tg d rv" style="margin-top:44px"><h3>Development · Coding</h3><div class="tiles" id="td"></div></div>
+</div></section>
+<script>
+(function(){
+const M=t=>'<span'+(t.length>3?' style="font-size:14px"':'')+'>'+t.replace(/</g,"&lt;").replace(/>/g,"&gt;")+'</span>'+(t.length<4?'<i class="cr"></i>':'');
+const S=b=>'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+b+'</svg>';
+const I={
+ bones:S('<g class="b1"><path d="M6 32L20 18"/><circle cx="6" cy="32" r="2.5" fill="currentColor"/><g class="b2"><path d="M20 18L34 24"/><circle cx="20" cy="18" r="2.5" fill="currentColor"/><circle cx="34" cy="24" r="2.5" fill="currentColor"/></g></g>'),
+ db:S('<g class="db"><path d="M10 20h20"/><circle cx="9" cy="14" r="3.5"/><circle cx="9" cy="26" r="3.5"/><circle cx="31" cy="14" r="3.5"/><circle cx="31" cy="26" r="3.5"/></g>'),
+ ez:S('<path d="M5 35C12 8 18 4 35 8"/><circle class="ez" cx="5" cy="35" r="3" fill="currentColor"/>'),
+ spark:S('<path class="tw" d="M20 5l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="currentColor"/><path class="tw" style="animation-delay:.5s" d="M31 26l1.5 3.5 3.5 1.5-3.5 1.5-1.5 3.5-1.5-3.5-3.5-1.5 3.5-1.5z" fill="currentColor"/>'),
+ coin:S('<ellipse class="co" cx="20" cy="20" rx="12" ry="12"/><ellipse class="co" cx="20" cy="20" rx="6" ry="6"/>'),
+ cube:S('<g class="sp"><path d="M20 5l13 7.5v15L20 35 7 27.5v-15z"/><path d="M20 20l13-7.5M20 20L7 12.5M20 20v15"/></g>'),
+ net:S('<path d="M20 9L9 30M20 9l11 21M9 30h22"/><circle class="pl" cx="20" cy="9" r="4" fill="currentColor"/><circle class="pl" style="animation-delay:.5s" cx="9" cy="30" r="4" fill="currentColor"/><circle class="pl" style="animation-delay:1s" cx="31" cy="30" r="4" fill="currentColor"/>'),
+ flame:S('<path class="fl" d="M20 4c2 8 10 11 10 20a10 10 0 01-20 0c0-5 3-7 5-10 1 3 2 4 3 4 0-5 0-9 2-14z"/>')
+};
+const A=[["Spine 2D","Rigging and animation","bones"],["DragonBones","Skeletal animation","db"],["Photoshop","Art and sprites","m:Ps"],["Illustrator","Vector art","m:Ai"],["Clip Studio Paint","Illustration","m:CSP"],["Easing and timing","Motion curves","ez"],["Particle VFX","Glow and sparkles","spark"]];
+const D=[["C#","Unity scripting","m:C#"],["C++","Native and performance","m:C++"],["JavaScript","HTML5 and web","m:JS"],["TypeScript","Typed web apps","m:TS"],["HTML and CSS","Web builds","m:</>"],["Unity","2D mobile games","cube"],["Angular","Web front end","m:Ng"],["Node.js","Server-side JS","m:Node"],["ASP.NET",".NET services","m:.NET"],["Firebase","Backend and data","flame"],["Photon","Multiplayer","net"],["Google AdMob","Monetization","m:Ad"]];
+function R(id,a){const el=document.getElementById(id);a.forEach((x,i)=>{const t=document.createElement("div");t.className="tile";t.style.setProperty("--i",i);
+ const ic=x[2].indexOf("m:")===0?M(x[2].slice(2)):I[x[2]];
+ t.innerHTML='<div class="ico">'+ic+'</div><b></b><small></small>';t.querySelector("b").textContent=x[0];t.querySelector("small").textContent=x[1];el.appendChild(t)})}
+R("ta",A);R("td",D);
+})();
+</script>
+
+<section id="work"><div class="wrap">
+  <span class="mono">03 · Reel</span>
+  <h2>Selected motions</h2>
+  <p class="lead">Animation clips demos.</p>
+  
+  <div class="tools" id="adm">
+    <input id="file" type="file" accept=".gif,.mp4,.webm,.avi,.mov,image/gif,video/*" multiple hidden>
+    <button class="btn o" id="add">Add GIF / video</button></div>
+  <div class="grid" id="grid"></div>
+  <p class="note" id="anote">Preview only. To keep a clip, host the file and add it to <code>WORKS</code> in the script. AVI won't play in browsers: <code>ffmpeg -i clip.avi clip.mp4</code>.</p>
+</div></section>
+
+<section id="games"><div class="wrap">
+  <span class="mono">04 · Shipped games</span>
+  <h2>The animation and the code behind it</h2>
+  <p class="lead">Three mobile titles, each showing both tracks.</p>
+  <div id="ggrid"></div>
+  <p class="note" id="gnote">Covers are illustrated. To show gameplay video, put the MP4 in a <code>clips</code> folder and set <code>video</code> for that game in <code>GAMES</code>.</p>
+</div></section>
+
+<section id="process"><div class="wrap">
+  <span class="mono">05 · Workflow</span>
+  <h2>From concept art to the device</h2>
+  <p class="lead" style="margin-bottom:28px">One pipeline I own end to end.</p>
+  <ol class="steps rv">
+    <li><b>Plan</b><span>Review concept art and design. Agree timing, style and the animation list.</span></li>
+    <li><b>Rig</b><span>Reusable rigs with clean bones, meshes, skins and events.</span></li>
+    <li><b>Animate</b><span>Block, polish and add VFX. Iterate on feedback and player testing.</span></li>
+    <li><b>Ship</b><span>Hook up with C# triggers. Profile memory, trim atlases, test devices.</span></li>
+  </ol>
+</div></section>
+
+<section id="fit"><div class="wrap">
+  <span class="mono">06 · Qualifications</span>
+  <h2>Experience at a glance</h2>
+  <p class="lead">Where my experience lines up</p>
+  <div class="fit rv">
+    <div><i class="a">Anim</i><b>Professional 2D game animation</b><span>5 years on casual and hyper-casual mobile titles for iOS, Android and Web.</span></div>
+    <div><i class="a">Anim</i><b>Spine portfolio and rigging</b><span>Spine 2D and DragonBones rigs in the reel above.</span></div>
+    <div><i class="a">Anim</i><b>Animation principles</b><span>Timing, easing, anticipation and follow-through, live in the hero demo.</span></div>
+    <div><i class="a">Anim</i><b>VFX</b><span>Particles, glow, sparkles and coin bursts.</span></div>
+    <div><i class="d">Dev</i><b>Game mechanics</b><span>I build core gameplay mechanics in Unity and C#.</span></div>
+    <div><i class="d">Dev</i><b>Mobile asset optimization</b><span>Memory profiling, asset optimization and device compatibility.</span></div>
+    <div><i class="d">Dev</i><b>Scripting for triggers</b><span>C# in Unity, plus JavaScript, TypeScript and C++ exposure.</span></div>
+    <div><i class="d">Dev</i><b>Fixing animations in-engine</b><span>I implement and debug in Unity myself, so hand-offs and fixes are fast.</span></div>
+    <div><i class="t">Team</i><b>Fast-paced teamwork</b><span>Agile teams; Lead Developer on two titles; quick on new codebases.</span></div>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <span class="mono">07 · Contact</span>
+  <h2>Let's make something move</h2>
+  <a class="cta" href="mailto:amathew790@gmail.com">amathew790@gmail.com</a>
+  <div class="info">
+    <div><b>Phone</b><a href="tel:+918593812549">+91 85938 12549</a><br>Pathanamthitta, Kerala, India</div>
+    <div><b>Experience</b>Senior Game Developer, WeBros Media Pvt. Ltd, Kochi, 2021 – 2026</div>
+    <div><b>Education</b>M.Tech CSE, Mangalam College of Engineering<br>B.Tech CSE, St. Thomas College of Engineering &amp; Technology</div>
+  </div>
+</div></section>
+<footer><div class="wrap">© 2026 Ashwin Cherry Mathew
+  <a class="in-logo" href="https://www.linkedin.com/in/ashwin-mathew-7a7841204" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+</a></a>
+</div></footer>
+
+<script>
+document.documentElement.classList.add("js");
+// Add permanent work: {title:"Reel spin", src:"clips/reel.mp4", note:"Spine"}
+const WORKS=[
+   {title:"Gem", cat:"Assets", src:"clips/Gem3.mp4", note:"Spine 2D"},
+   {title:"Treassure Box", cat:"Assets", src:"clips/Treasure Box.mp4", note:"Spine 2D"},
+   {title:"Magical Stone", cat:"Assets", src:"clips/Stone.mp4", note:"Spine 2D"}
+];
+// Set video to a gameplay clip (e.g. "clips/color-loop.mp4"); it plays muted on loop. img then works as its poster frame.
+// Set img to a screenshot path (e.g. "images/color-loop.png") to replace the illustrated cover when there is no video.
+// Set site to the game's web address (e.g. "https://example.com/color-loop") to show its Site address link.
+// Set play to the game's link (e.g. "https://play.google.com/...") for its main Play game button.
+// Set links to add buttons that open the game, e.g. links:[{label:"Google Play",url:"https://play.google.com/..."},{label:"App Store",url:"https://apps.apple.com/..."}].
+const GAMES=[
+  {n:"BST Sweet Express",art:"sweet",video:"clips/SweetExpress.mp4",img:"",site:"",play:"https://play.google.com/store/apps/details?id=com.animacastproduction.bstsweetexpress&pcampaignid=web_share",links:[],tags:"iOS · Android · Time management",when:"Lead Developer · Dec 2025 – Jun 2026",a:"Character Animations and visual effects in DragonBones.",d:"Game mechanics in Unity."},
+ {n:"Color Loop",art:"loop",video:"clips/ColorLoop.mp4",img:"",site:"",play:"https://play.google.com/store/apps/details?id=com.animacastproduction.colorloopultimatechallenge&pcampaignid=web_share",links:[],tags:"iOS · Android · Hyper-casual",when:"Lead Developer · May – Nov 2023",a:"Animations and visual effects.",d:"Mechanics, UI implementation and AdMob in Unity and C#."},
+ {n:"Mansionscape",art:"match",video:"clips/Mansionscape_1.mp4",img:"",site:"",play:"https://play.google.com/store/apps/details?id=com.animacastproduction.mansionscapes&pcampaignid=web_share",links:[],tags:"iOS · Android · Match-3",when:"Developer · Jul – Dec 2021",a:"",d:"Tile matching, combos, boosters, level progression and reward loops in Unity, C#, Firebase and Google Play Games."}
+];
+const CATS=["Reels & symbols","Characters","Bonus & win","VFX","UI & transitions","Gameplay & dev demos"];
+let uploads=[],filter="All";const $=id=>document.getElementById(id);
+const admin=location.hash==="#admin";
+
+/* Reels */
+const SYMS=[["7","r"],["★",""],["♦","g"],["BAR","r"],["♣",""]],H=96,reels=[];
+(function(){for(let r=0;r<3;r++){const w=document.createElement("div");w.className="reel";const s=document.createElement("div");s.className="strip";
+ for(let i=0;i<40;i++){const [t,c]=SYMS[i%5],d=document.createElement("div");d.className="sym "+c;d.textContent=t;if(t==="BAR")d.style.fontSize="28px";s.appendChild(d)}
+ w.appendChild(s);$("reels").appendChild(w);reels.push(s)}})();
+let spinning=false;
+function spin(){if(spinning)return;spinning=true;const rd=matchMedia("(prefers-reduced-motion:reduce)").matches;
+ reels.forEach((s,i)=>{s.style.transition="none";s.style.transform="translateY(0)";void s.offsetHeight;
+  s.style.transition="transform .16s ease-out";s.style.transform="translateY(14px)";
+  setTimeout(()=>{s.style.transition=`transform ${rd?.2:1.5+i*.45}s cubic-bezier(.2,.9,.3,1.18)`;s.style.transform=`translateY(${-(20+5*i)*H}px)`},170+i*120)});
+ setTimeout(()=>{spinning=false;const r=$("reels").getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2)},2800)}
+$("spin").onclick=spin;
+
+/* Burst */
+const cv=$("fx"),cx=cv.getContext("2d");let P=[],raf=0;
+function size(){const d=devicePixelRatio||1;cv.width=innerWidth*d;cv.height=innerHeight*d;cx.setTransform(d,0,0,d,0,0)}
+addEventListener("resize",size);size();
+function burst(x,y){if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+ for(let i=0;i<46;i++){const a=-Math.PI/2+(Math.random()-.5)*2.2,v=5+Math.random()*9;P.push({k:"c",x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,r:6+Math.random()*5,l:1,ph:Math.random()*6})}
+ for(let i=0;i<30;i++){const a=Math.random()*6.28,v=2+Math.random()*6;P.push({k:"s",x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,r:4+Math.random()*7,l:1})}
+ P.push({k:"g",x,y,r:20,l:1});if(!raf)raf=requestAnimationFrame(tick)}
+function star(x,y,r){cx.beginPath();for(let i=0;i<8;i++){const a=i*Math.PI/4,q=i%2?r*.25:r;cx.lineTo(x+Math.cos(a)*q,y+Math.sin(a)*q)}cx.closePath();cx.fill()}
+function tick(){cx.clearRect(0,0,innerWidth,innerHeight);P=P.filter(p=>p.l>0);
+ for(const p of P){
+  if(p.k==="g"){p.r+=9;p.l-=.045;cx.globalCompositeOperation="lighter";const g=cx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r);g.addColorStop(0,`rgba(255,200,100,${p.l*.6})`);g.addColorStop(1,"rgba(255,170,40,0)");cx.fillStyle=g;cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.28);cx.fill();cx.globalCompositeOperation="source-over";continue}
+  p.x+=p.vx;p.y+=p.vy;p.vy+=p.k==="c"?.35:.05;p.vx*=.99;
+  if(p.k==="c"){p.l-=.009;p.ph+=.25;const w=Math.abs(Math.cos(p.ph))*p.r+1;cx.globalAlpha=Math.min(1,p.l*2);cx.fillStyle="#ffb547";cx.beginPath();cx.ellipse(p.x,p.y,w,p.r,0,0,6.28);cx.fill();cx.fillStyle="#ffe2a8";cx.beginPath();cx.ellipse(p.x-w*.2,p.y-p.r*.2,w*.35,p.r*.35,0,0,6.28);cx.fill()}
+  else{p.l-=.025;cx.globalCompositeOperation="lighter";cx.globalAlpha=Math.max(0,p.l);cx.fillStyle="#ffe7a0";star(p.x,p.y,p.r*p.l+1);cx.globalCompositeOperation="source-over"}}
+ cx.globalAlpha=1;raf=P.length?requestAnimationFrame(tick):0;if(!raf)cx.clearRect(0,0,innerWidth,innerHeight)}
+
+/* Illustrated covers */
+const ART={
+ sweet:'<svg viewBox="0 0 400 300"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8ab4"/><stop offset="1" stop-color="#8b7cf6"/></linearGradient></defs><rect width="400" height="300" fill="url(#g1)"/><circle cx="70" cy="60" r="7" fill="#fff" opacity=".7"/><circle cx="338" cy="84" r="10" fill="#ffd36b"/><circle cx="318" cy="226" r="6" fill="#fff" opacity=".7"/><ellipse cx="200" cy="264" rx="116" ry="14" fill="#000" opacity=".2"/><path d="M132 160h136l-18 100H150z" fill="#4fd1c5"/><path d="M162 160l8 100M200 160v100M238 160l-8 100" stroke="#0d1015" stroke-opacity=".2" stroke-width="3"/><circle cx="200" cy="140" r="60" fill="#fff3e0"/><circle cx="172" cy="112" r="32" fill="#ff5d73"/><circle cx="216" cy="104" r="28" fill="#fff3e0"/><circle cx="200" cy="66" r="14" fill="#ff5d73"/><path d="M200 52q8-20 24-24" stroke="#0d1015" stroke-width="4" fill="none" stroke-linecap="round"/></svg>',
+ loop:'<svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#0d1015"/><g class="spin" fill="none" stroke-width="20" stroke-linecap="round"><circle cx="200" cy="150" r="112" stroke="#ff5d73" stroke-dasharray="170 530"/><circle cx="200" cy="150" r="80" stroke="#ffb547" stroke-dasharray="130 370"/><circle cx="200" cy="150" r="48" stroke="#4fd1c5" stroke-dasharray="90 210"/></g><circle cx="200" cy="150" r="16" fill="#8b7cf6"/></svg>',
+ match:'<svg viewBox="0 0 400 300"><defs><linearGradient id="g3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b6f78"/><stop offset="1" stop-color="#0d1015"/></linearGradient></defs><rect width="400" height="300" fill="url(#g3)"/><path d="M140 72l60-44 60 44z" fill="#ff5d73"/><rect x="110" y="84" width="56" height="56" rx="12" fill="#ffb547"/><rect x="172" y="84" width="56" height="56" rx="12" fill="#ffb547"/><rect x="234" y="84" width="56" height="56" rx="12" fill="#ffb547"/><rect x="110" y="146" width="56" height="56" rx="12" fill="#8b7cf6"/><rect x="172" y="146" width="56" height="56" rx="12" fill="#ff5d73"/><rect x="234" y="146" width="56" height="56" rx="12" fill="#8b7cf6"/><rect x="110" y="208" width="56" height="56" rx="12" fill="#fff3e0"/><rect x="172" y="208" width="56" height="56" rx="12" fill="#4fd1c5"/><rect x="234" y="208" width="56" height="56" rx="12" fill="#ff5d73"/></svg>'};
+function gmedia(m,src,name,vid,poster){m.innerHTML="";
+ if(vid){const v=document.createElement("video");v.src=src;if(poster)v.poster=poster;v.muted=true;v.loop=true;v.autoplay=true;v.controls=true;v.playsInline=true;v.preload="metadata";v.setAttribute("aria-label",name+" gameplay video");
+  v.onerror=()=>{m.innerHTML="";const e=document.createElement("div");e.className="err";e.textContent="Video could not load. Use MP4 or WebM.";m.appendChild(e)};m.appendChild(v)}
+ else{const i=document.createElement("img");i.src=src;i.alt=name;i.loading="lazy";m.appendChild(i)}}
+function games(){const g=$("ggrid");GAMES.forEach(x=>{
+ const c=document.createElement("article");c.className="case rv";const f=document.createElement("div");f.className="fr";const m=document.createElement("div");m.className="media";
+ if(x.video)gmedia(m,x.video,x.n,true,x.img);else if(x.img)gmedia(m,x.img,x.n+" screenshot",false);else m.innerHTML=ART[x.art];
+ f.appendChild(m);const b=document.createElement("div");
+ b.innerHTML='<span class="mono tg"></span><h3></h3><p class="wn" style="color:var(--mu);margin:0"></p><div class="two"><div><span class="mono">Animation</span><span class="an"></span></div><div><span class="mono">Development</span><span class="dv"></span></div></div><div class="lnk"></div><div class="site"><span class="mono">Site address</span><span class="sa"></span></div>';
+ b.querySelector(".tg").textContent=x.tags;b.querySelector("h3").textContent=x.n;b.querySelector(".wn").textContent=x.when;
+ b.querySelector(".an").textContent=x.a||"Animations and visual effects. Shader effects.";b.querySelector(".dv").textContent=x.d;
+ const sa=b.querySelector(".sa");
+ if(x.site&&/^https?:\/\//i.test(x.site)){const a=document.createElement("a");a.href=x.site;a.target="_blank";a.rel="noopener noreferrer";a.textContent=x.site.replace(/^https?:\/\//i,"").replace(/\/$/,"")+" ↗";sa.appendChild(a)}
+ else if(admin){sa.textContent="Not set yet. Add site:\"https://...\" to this game in GAMES."}
+ else b.querySelector(".site").style.display="none";
+ const lk=b.querySelector(".lnk");
+ if(x.play&&/^https?:\/\//i.test(x.play)){const a=document.createElement("a");a.className="btn";a.href=x.play;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Play game ↗";lk.appendChild(a)}
+ (x.links||[]).forEach(l=>{if(l&&l.url&&/^https?:\/\//i.test(l.url)){const a=document.createElement("a");a.className="btn"+(lk.children.length?" o":"");a.href=l.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=(l.label||"Play")+" ↗";lk.appendChild(a)}});
+ if(!lk.children.length){const d=document.createElement("span");d.className="btn o dis";d.setAttribute("aria-disabled","true");d.textContent="Play game · link coming soon";lk.appendChild(d)}
+ if(admin){const i=document.createElement("input");i.type="file";i.accept="video/*,image/*,.mp4,.webm";i.hidden=true;const k=document.createElement("button");k.className="btn o";k.style.cssText="margin-top:16px;padding:6px 14px;font-size:14px";k.textContent="Preview a video or image";k.onclick=()=>i.click();
+  i.onchange=()=>{const f0=i.files[0];if(f0)gmedia(m,URL.createObjectURL(f0),x.n,f0.type.startsWith("video/"))};const k2=document.createElement("button");k2.className="btn o";k2.style.cssText="margin:16px 0 0 10px;padding:6px 14px;font-size:14px";k2.textContent="Add game link";
+  const out=document.createElement("p");out.className="note";const added=[];
+  k2.onclick=()=>{const u=prompt("Game link (starts with https://)");if(!u)return;const url=u.trim();if(!/^https?:\/\//i.test(url)){alert("Enter a full address starting with https://");return}
+   const lb=(prompt("Button label","Play game")||"Play game").trim();
+   const L=b.querySelector(".lnk");const dd=L.querySelector(".dis");if(dd)dd.remove();L.className="lnk";L.style.display="";
+   const a=document.createElement("a");a.className=L.children.length?"btn o":"btn";a.href=url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=lb+" ↗";L.appendChild(a);
+   added.push({label:lb,url:url});out.textContent="To keep it, paste this into this game in GAMES: links:"+JSON.stringify(added)};
+  b.append(i,k,k2,out)}
+ c.append(f,b);g.appendChild(c)})}
+
+/* Reel gallery */
+function mediaFor(w){const m=document.createElement("div");m.className="media";
+ const isImg=/\.(gif|png|jpe?g|webp)(\?|$)/i.test(w.name||w.src)||w.type==="image/gif";
+ const fail=()=>{m.innerHTML="";const e=document.createElement("div");e.className="err";e.textContent="This format can't play in a browser. Convert AVI/MOV to MP4, WebM or GIF.";m.appendChild(e)};
+ if(isImg){const i=document.createElement("img");i.src=w.src;i.alt=w.title;i.onerror=fail;m.appendChild(i)}
+ else{const v=document.createElement("video");v.src=w.src;v.controls=true;v.loop=true;v.muted=true;v.playsInline=true;v.autoplay=true;v.onerror=fail;m.appendChild(v)}
+ return m}
+function render(){const g=$("grid");g.innerHTML="";const all=[...WORKS,...uploads],list=all.filter(w=>filter==="All"||w.cat===filter);
+ if(!all.length){["Reel spin and stop","Symbol win loop","Coin burst VFX","Gameplay systems demo","Multiplayer or backend demo","Profiler before and after"].forEach(t=>{const c=document.createElement("div");c.className="card";c.innerHTML='<div class="media"><div class="ph2">Clip goes here</div></div><div class="meta"><b>'+t+"</b></div>";g.appendChild(c)});return}
+ if(!list.length){g.innerHTML='<p class="lead">No clips in this category yet.</p>';return}
+ list.forEach(w=>{const c=document.createElement("div");c.className="card";c.appendChild(mediaFor(w));
+  const m=document.createElement("div");m.className="meta";const d=document.createElement("div"),b=document.createElement("b");b.textContent=w.title;
+  const s=document.createElement("span");s.className="mono";s.textContent=[w.cat,w.note].filter(Boolean).join(" · ");d.append(b,s);m.appendChild(d);
+  if(w.local){const x=document.createElement("button");x.className="rm";x.textContent="Remove";x.onclick=()=>{URL.revokeObjectURL(w.src);uploads=uploads.filter(u=>u!==w);render()};m.appendChild(x)}
+  c.appendChild(m);g.appendChild(c)})}
+function chips(){const c=$("chips");c.innerHTML="";["All",...CATS].forEach(n=>{const b=document.createElement("button");b.className="chip";b.textContent=n;b.setAttribute("aria-pressed",n===filter);b.onclick=()=>{filter=n;chips();render()};c.appendChild(b)})}
+$("add").onclick=()=>$("file").click();
+$("file").onchange=e=>{[...e.target.files].forEach(f=>uploads.push({title:f.name.replace(/\.[^.]+$/,""),cat:"",src:URL.createObjectURL(f),name:f.name,type:f.type,local:true}));e.target.value="";render()};
+
+if(!admin){$("adm").style.display="none";$("anote").style.display="none";$("gnote").style.display="none"}
+games();render();
+
+/* Playhead + reveal */
+let tk=0;function pos(){tk=0;const h=document.documentElement,p=Math.min(1,scrollY/Math.max(1,h.scrollHeight-innerHeight));$("ph").style.width=p*100+"%";$("tc").textContent=String(Math.round(p*240)).padStart(4,"0")+"f"}
+addEventListener("scroll",()=>{if(!tk)tk=requestAnimationFrame(pos)},{passive:true});pos();
+const rv=document.querySelectorAll(".rv");
+if("IntersectionObserver" in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});rv.forEach(x=>io.observe(x))}else rv.forEach(x=>x.classList.add("in"));
+</script>
+</body>
+</html>
